@@ -5,9 +5,9 @@ OutputFileSchema = {
     'type': 'dict',
     'required': True,
     'schema': {
-        'filename': { 'type': 'string', 'required': True }, 
-        'system_includes': { 'type': 'list', 'keyschema': { 'type': 'string' } }, 
-        'local_includes': { 'type': 'list', 'keyschema': { 'type': 'string' } }, 
+        'filename': { 'type': 'string', 'required': True },
+        'system_includes': { 'type': 'list', 'keyschema': { 'type': 'string' } },
+        'local_includes': { 'type': 'list', 'keyschema': { 'type': 'string' } },
     }
 }
 
@@ -32,7 +32,7 @@ EnumerationSchema = {
     'type': 'dict',
     'schema':  {
         'name': { 'type': 'string', 'required': True },
-        'namespace': { 
+        'namespace': {
             'type': 'list',
             'keyschema': { 'type': 'string' },
         },
@@ -55,8 +55,8 @@ ConfigSchema = {
         'schema': {
             'header': OutputFileSchema,
             'source': OutputFileSchema,
-        }, 
-    }, 
+        },
+    },
 
     'enumerations': {
         'type': 'list',

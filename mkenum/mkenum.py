@@ -12,9 +12,9 @@ from config_model import ConfigSchema
 # TODO: Correctly set namespace in t_string function
 
 Jinja = Environment(
-    loader=FileSystemLoader( os.path.dirname(__file__) + '/templates/' ), 
-    trim_blocks=True, 
-    lstrip_blocks=True, 
+    loader=FileSystemLoader( os.path.dirname(__file__) + '/templates/' ),
+    trim_blocks=True,
+    lstrip_blocks=True,
     keep_trailing_newline=True
 )
 
@@ -72,7 +72,7 @@ if __name__ == '__main__':
 
     # Make sure to wrap doc comments
     for enum in config['enumerations']:
-        if 'doc_comment' in enum: 
+        if 'doc_comment' in enum:
             enum['doc_comment'] = wrap(enum['doc_comment'], width=72)
 
     # Normalize enums. Put them all in the detailed format
