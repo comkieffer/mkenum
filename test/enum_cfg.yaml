@@ -1,0 +1,60 @@
+
+outputs:
+  header:
+    filename: generated/ships.hpp
+
+  source:
+    filename: generated/ships.cpp
+    local_includes:
+      - "ships.hpp"
+
+enumerations:
+  - name: Colour
+    namespace: 
+      - Foo
+      - Bar
+      - Util
+    doc_comment:
+      Colours are a very important part of the world. 
+
+      This is a curated list of important colours.
+
+    values: 
+      - Red
+      - Green
+      - Blue
+      - Yellow
+      - Grey
+
+  - name: Ship
+    namespace:
+      - Universe
+      - SolarSystem
+      - Earth
+      - Sea
+
+    mappings: 
+      - to: colour
+        name: get_ship_colour
+        return_type: Foo::Bar::Util::Colour
+
+      - to: type
+        name: get_ship_type
+        return_type: std::string
+
+    values: 
+      - identifier: Mistral
+        value: 12
+        type: '"Aircraft Carrier"'
+        colour: Foo::Bar::Util::Colour::Grey
+
+      - identifier: NorthStart
+        type: '"Fishing Boat"'
+        colour: Foo::Bar::Util::Colour::Blue
+
+      - identifier: YellowSubmarine
+        type: '"Submarine"'
+        colour: Foo::Bar::Util::Colour::Yellow
+
+
+
