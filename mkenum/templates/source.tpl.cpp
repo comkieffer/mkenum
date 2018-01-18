@@ -62,9 +62,13 @@ namespace {{ namespace }} {
             return {{ value[ mapping["to"] ] }};
         {% endif %}
         {% endfor %}
+            throw std::out_of_range(
+                std::to_string(
+                    static_cast<std::underlying_type<{{ enum["name"] }}>::type>(value)
+                )
+            );
+        }
     
-        throw std::out_of_range(to_string(value));
-    }
 
     {% endfor %}
 
