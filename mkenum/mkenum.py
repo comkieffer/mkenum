@@ -83,6 +83,13 @@ if __name__ == '__main__':
                 if isinstance(enum["values"][idx], str):
                     enum["values"][idx] = { 'identifier': enum["values"][idx] }
 
+    # Normalize mappings.
+    # The 'name' field on mappings is optional. Here we fill it in
+    for enum in config["enumerations"]:
+        for mapping in enum.get("mappings", []):
+            if not mapping.get("name"):
+                mapping["name"] = "get_" + mapping["to"]
+
     hpp_file = config["outputs"]["header"]["filename"]
     if not os.path.isabs(hpp_file):
         hpp_file = os.path.join(os.getcwd(), hpp_file)
