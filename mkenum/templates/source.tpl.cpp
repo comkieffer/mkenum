@@ -51,17 +51,20 @@ namespace {{ namespace }} {
         throw std::out_of_range(value);
     }
 
-    {% for mapping in enum["mappings"] %}
-    {{ mapping["return_type"] }} {{ mapping["name"] }}({{ enum["name"] }} value) {
-        {% for value in enum["values"] %}
-        {% if loop.index == 1 %}
-        if (value == {{ enum["name"] }}::{{ value[ "identifier" ] }}) 
-            return {{ value[ mapping["to"] ] }};
-        {% else %}
-        else if (value == {{ enum["name"] }}::{{ value[ "identifier" ] }}) 
-            return {{ value[ mapping["to"] ] }};
-        {% endif %}
-        {% endfor %}
+    namespace {{ enum.name }}_ {
+
+        {% for mapping in enum["mappings"] %}
+        {{ mapping["return_type"] }} {{ mapping["name"] }}({{ enum["name"] }} value) {
+            {% for value in enum["values"] %}
+            {% if loop.index == 1 %}
+            if (value == {{ enum["name"] }}::{{ value[ "identifier" ] }})
+                return {{ value[ mapping["to"] ] }};
+            {% else %}
+            else if (value == {{ enum["name"] }}::{{ value[ "identifier" ] }})
+                return {{ value[ mapping["to"] ] }};
+            {% endif %}
+            {% endfor %}
+    
             throw std::out_of_range(
                 std::to_string(
                     static_cast<std::underlying_type<{{ enum["name"] }}>::type>(value)
@@ -69,8 +72,9 @@ namespace {{ namespace }} {
             );
         }
     
+        {% endfor %}
 
-    {% endfor %}
+    }   
 
 {% for namespace in enum.namespace %}
 } // end namespace {{ namespace }}

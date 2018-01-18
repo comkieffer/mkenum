@@ -52,17 +52,19 @@ namespace {{ namespace }} {
      * @return The {{ enum.name }} value.
      */
     {{ enum.full_namespace }}::{{enum.name}} to_{{ enum.name }}(const std::string & value);
-    
-    {% for mapping in enum["mappings"] %}
-    {{ mapping["return_type"] }} {{ mapping["name"] }}({{ enum["name"] }} value);
-    {% endfor %}
 
     namespace {{ enum.name }}_ {
+
         constexpr std::array<{{ enum["name"] }}, {{ enum["values"]|length }}> Values{
         {% for value in enum["values"] %}
             {{ enum["name"] }}::{{ value["identifier"] }},
         {% endfor %}
         };
+
+        {% for mapping in enum["mappings"] %}
+        {{ mapping["return_type"] }} {{ mapping["name"] }}({{ enum["name"] }} value);
+        {% endfor %}
+
     }
     
 {% for namespace in enum.namespace|reverse %}
