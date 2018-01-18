@@ -22,9 +22,7 @@ EnumerationItem = {
 EnumerationValueMappingSchema = {
     'type': 'dict',
     'schema': {
-        'from': { 'type': 'string', 'required': True },
         'to': { 'type': 'string', 'required': True },
-        'input_type': { 'type': 'string', 'required': True },
         'name': { 'type': 'string', 'required': False },
         'return_type': { 'type': 'string', 'required': True },
     }
