@@ -11,13 +11,13 @@
 #include <array>
 
 {% if config["outputs"]["header"]["system_includes"] %}
-    {% for include in config["outputs"]["source"]["system_includes"] %}
+    {% for include in config["outputs"]["header"]["system_includes"] %}
 #include <{{ include }}>
     {% endfor %}
 {% endif %}
 
 {% if config["outputs"]["header"]["local_includes"] %}
-    {% for include in config["outputs"]["source"]["local_includes"] %}
+    {% for include in config["outputs"]["header"]["local_includes"] %}
 #include "{{ include }}"
     {% endfor %}
 {% endif %}
