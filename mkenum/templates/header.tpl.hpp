@@ -82,6 +82,8 @@ namespace {{ namespace }} {
  */
 std::string to_string(const {{ enum.full_namespace }}::{{ enum.name }} value);
 
+std::ostream& operator<<(std::ostream& os, const {{ enum.full_namespace }}::{{ enum.name }} value);
+
 {% else %}
 // No enums found in config
 {% endfor %} {# for enum in enums #}

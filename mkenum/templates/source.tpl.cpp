@@ -33,6 +33,12 @@ std::string to_string({{ enum["full_namespace"] }}::{{ enum.name }} value) {
     }
 }
 
+
+std::ostream& operator<<(std::ostream& os, const {{ enum.full_namespace }}::{{ enum.name }} value) {
+    os << to_string(value);
+    return os;
+}
+
 {% for namespace in enum["namespace"] %}
 namespace {{ namespace }} {
 {% endfor %}
