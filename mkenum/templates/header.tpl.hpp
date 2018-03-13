@@ -75,7 +75,7 @@ namespace {{ namespace }} {
  * Convert a {{ enum.name }} to a std::string
  *
  * The generated string is simply a stringification of the name of the enum value. It can be used to
- * to and from the enum in conjunction with #to_{{ enum.name }}
+ * to and from the enum in conjunction with {{ enum.full_namespace }}::to_{{ enum.name }}
  * 
  * @param value The {{ enum.name }} to convert
  * @return A stringified representation of \p value
